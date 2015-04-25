@@ -370,59 +370,45 @@ public class MyAgent extends Agent
         if ( !((0 <= columnIndex && columnIndex < nbrColumns) && (0 <= slotIndex && slotIndex < nbrRows)) )
             return maxConnects;
         
-        // Horizonatally and left side
+        // Check horizonatally and left side
         int nbrConnectedTokens = 0;
         for (int x = columnIndex - 1; 0 <= x; x--) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(slotIndex);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break;
         }
-        maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Horizonatally and right side
-        nbrConnectedTokens = 0;
+        // Continue checking horizonatally but right side
         for (int x = columnIndex + 1; x < nbrColumns; x++) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(slotIndex);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
                 }
-            }
             else break;
         }           
         maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Vertically and down side
+
+        // Check vertically and down side
         nbrConnectedTokens = 0;
         for (int y = slotIndex + 1; y < nbrRows; y++) {
             Connect4Slot slot = myGame.getColumn(columnIndex).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break;
         } 
-        maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Vertically and up side
-        nbrConnectedTokens = 0;
+        // Continue checkinh vertically but up side
         for (int y = slotIndex - 1; 0 <= y; y--) {
             Connect4Slot slot = myGame.getColumn(columnIndex).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break;
         }           
         maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Diagonally left side and up side
+
+        // Chek diagonally left side and up side
         nbrConnectedTokens = 0;
         int x = columnIndex - 1;
         int y = slotIndex - 1;
@@ -430,33 +416,26 @@ public class MyAgent extends Agent
             Connect4Slot slot = myGame.getColumn(x).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break;
             x--;
             y--;
         }
-        maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Diagonally right side and down side
-        nbrConnectedTokens = 0;
+        // Continue checking diagonally but right side and down side
         x = columnIndex + 1;
         y = slotIndex + 1;
         while (x < nbrColumns && y < nbrRows) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break; 
             x++;
             y++;
         }
         maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Diagonally left side and down side
+
+        // Check diagonally left side and down side
         nbrConnectedTokens = 0;
         x = columnIndex - 1;
         y = slotIndex + 1;
@@ -464,26 +443,18 @@ public class MyAgent extends Agent
             Connect4Slot slot = myGame.getColumn(x).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break; 
             x--;
             y++;
         }
-        maxConnects = (nbrConnectedTokens > maxConnects) ? nbrConnectedTokens : maxConnects;
-        // Diagonally right side and up side
-        nbrConnectedTokens = 0;
+        // Continue checking diagonally but right side and up side
         x = columnIndex + 1;
         y = slotIndex - 1;
         while (x < nbrColumns && 0 <= y) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
                 nbrConnectedTokens ++;
-                if (nbrConnectedTokens >= 3) {
-                    break;
-                }
             }
             else break; 
             x++;
