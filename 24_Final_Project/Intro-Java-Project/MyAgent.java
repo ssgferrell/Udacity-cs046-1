@@ -191,7 +191,7 @@ public class MyAgent extends Agent
         if ( !((0 <= columnIndex && columnIndex < nbrColumns) && (0 <= slotIndex && slotIndex < nbrRows)) )
             return false;
         
-        // Horizonatally and left side
+        // Check horizontally and left side
         int nbrConnectedSlots = 1;
         for (int x = columnIndex - 1; 0 <= x; x--) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(slotIndex);
@@ -203,8 +203,7 @@ public class MyAgent extends Agent
             }
             else break;
         }
-        // Horizonatally and right side
-        nbrConnectedSlots = 1;
+        // Continue to check horizontally and right side
         for (int x = columnIndex + 1; x < nbrColumns; x++) {
             Connect4Slot slot = myGame.getColumn(x).getSlot(slotIndex);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
@@ -215,7 +214,8 @@ public class MyAgent extends Agent
             }
             else break;
         }           
-        // Vertically and down side
+        
+        // Check vertically and down side
         nbrConnectedSlots = 1;
         for (int y = slotIndex + 1; y < nbrRows; y++) {
             Connect4Slot slot = myGame.getColumn(columnIndex).getSlot(y);
@@ -227,8 +227,7 @@ public class MyAgent extends Agent
             }
             else break;
         } 
-        // Vertically and up side
-        nbrConnectedSlots = 1;
+        // Continue to check vertically and up side
         for (int y = slotIndex - 1; 0 <= y; y--) {
             Connect4Slot slot = myGame.getColumn(columnIndex).getSlot(y);
             if (slot.getIsFilled() && slot.getIsRed() == redPlayer) {
@@ -239,7 +238,8 @@ public class MyAgent extends Agent
             }
             else break;
         }           
-        // Diagonally left side and up side
+        
+        // Check diagonally left side and up side
         nbrConnectedSlots = 1;
         int x = columnIndex - 1;
         int y = slotIndex - 1;
@@ -255,8 +255,7 @@ public class MyAgent extends Agent
             x--;
             y--;
         }
-        // Diagonally right side and down side
-        nbrConnectedSlots = 1;
+        // Continue to check diagonally right side and down side
         x = columnIndex + 1;
         y = slotIndex + 1;
         while (x < nbrColumns && y < nbrRows) {
@@ -271,7 +270,8 @@ public class MyAgent extends Agent
             x++;
             y++;
         }
-        // Diagonally left side and down side
+
+        // Check diagonally left side and down side
         nbrConnectedSlots = 1;
         x = columnIndex - 1;
         y = slotIndex + 1;
@@ -287,8 +287,7 @@ public class MyAgent extends Agent
             x--;
             y++;
         }
-        // Diagonally right side and up side
-        nbrConnectedSlots = 1;
+        // Continue to check diagonally right side and up side
         x = columnIndex + 1;
         y = slotIndex - 1;
         while (x < nbrColumns && 0 <= y) {
