@@ -336,19 +336,33 @@ public class MyAgent extends Agent
      */
     public int canConnectTheMost(boolean redPlayer)
     {
+        int nbrOfColumns = myGame.getColumnCount();
         int winningColumn = -1;
         int maxConnects = 0;
-        for (int i = 0; i < myGame.getColumnCount(); i++) 
+        for (int i = 0; i <= nbrOfColumns/2; i++) 
         {
-            int slotIndex = getLowestEmptyIndex(myGame.getColumn(i));
+            int slotIndex = getLowestEmptyIndex(myGame.getColumn(nbrOfColumns/2 + i));
             if (slotIndex != -1)  // if column is not full
             {
-                int connects = canConnectUpTo(i, slotIndex, redPlayer);
+                int connects = canConnectUpTo(nbrOfColumns/2 + i, slotIndex, redPlayer);
                 if (connects > maxConnects)  
                 {
                     maxConnects = connects;
-                    winningColumn = i;
+                    winningColumn = nbrOfColumns/2 + i;
                 }
+            }
+            if (i > 0) 
+            {
+                slotIndex = getLowestEmptyIndex(myGame.getColumn(nbrOfColumns/2 - i));
+                if (slotIndex != -1) 
+                {
+                    int connects = canConnectUpTo(nbrOfColumns/2 - i, slotIndex, redPlayer);
+                    if (connects > maxConnects)  
+                    {
+                        maxConnects = connects;
+                        winningColumn = nbrOfColumns/2 - i;
+                    }
+                }               
             }
         }
         return winningColumn; 
