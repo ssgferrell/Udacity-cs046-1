@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Final Project of Udacity CS046 (Intro to Java Programming)
+PURPOSE OF PROJECT: See ../IntrotoJavaProgrammingFinalProjectDescription.pdf
+VERSION or DATE: 26/04/15
+HOW TO START THIS PROJECT: See ../IntrotoJavaProgrammingFinalProjectDescription.pdf
+AUTHORS: Pack Heng
+USER INSTRUCTIONS: 
